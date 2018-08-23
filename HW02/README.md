@@ -34,7 +34,7 @@ Selection sort (for the ascending order), operates on the following
 principle:
 
 1. find the smallest number
-2. move it to the beginning
+2. move it to the beginning of the list
 3. exclude the number, and sort the rest of the data
 
 Write Self-Checking Code
@@ -68,7 +68,7 @@ Create More Test Cases
 Do not create test cases by hand and sort them by hand.  Two programs
 in Linux may be helpful for you creating larger test cases:
 
-* `shuf`: generate random permutations. `shuf -i 1-100` shuffles the numbers between 1 and 100. `shuf -r -i 1-100 -n 100` allows repetition and keeps only the first 100 numbers.
+* `shuf`: generate random permutations. `shuf -i 1-100` shuffles the numbers between 1 and 100.
 
 * `sort`: sort lines of text. If you want to sort numbers, please add `-n`.  
 
