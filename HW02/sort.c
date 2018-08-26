@@ -33,7 +33,24 @@ void ssort(int * arr, int size)
 
   // After finding the smallest element among the unsorted elements,
   // swap it with the element of the index from the first level
-  
+  int i;
+  for (i = 0; i < size; i++)
+  {
+	  int min = arr[i];
+	  int minInd = i;
+	  int j;
+	  for (j = i; j < size; j++)
+	  {
+		if (arr[j] < min)
+		{
+			min = arr[j];
+			minInd = j;
+		}
+	  }
+	  int placeHolder = arr[minInd];
+	  arr[minInd] = arr[i];
+	  arr[i] = placeHolder;
+  }  
   // call checkOrder to see whether this function correctly sorts the
   // elements
   if (checkOrder(arr, size) == false)
