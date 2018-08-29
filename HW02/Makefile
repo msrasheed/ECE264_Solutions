@@ -36,6 +36,13 @@ test3: sort
 	./sort inputs/test3 > output3
 	diff output3 expected/expected3
 
+testRand: sort
+	shuf -i 1-1000 > inputs/test
+	sort -n inputs/test > expected/test
+	./sort inputs/test > output
+	sed '1d' output > meh
+	diff meh expected/test	
+
 clean: # remove all machine generated files
 	rm -f sort *.o output?
 
