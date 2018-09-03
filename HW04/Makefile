@@ -12,7 +12,7 @@ SRCS = datapoint.c centroid.c hw04.c
 OBJS = $(SRCS:%.c=%.o)
 
 hw04: $(OBJS)
-	$(GCC) $(TESTFALGS) $(OBJS) -o hw04
+	$(GCC) $(TESTFALGS) $(OBJS) -lm -o hw04
 
 .c.o:
 	$(GCC) $(TESTFALGS) -c $*.c
