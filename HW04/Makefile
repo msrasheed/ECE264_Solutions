@@ -40,6 +40,7 @@ test2: hw04
 test3: hw04
 	./hw04 test/test3.txt 4 output/output3.txt
 	diff -i -w output/output3.txt expected/expected3.txt
+
 test4: hw04
 	./hw04 test/test4.txt 4 output/output4.txt
 	diff -i -w output/output4.txt expected/expected4.txt
