@@ -17,7 +17,7 @@ hw04: $(OBJS)
 .c.o:
 	$(GCC) $(TESTFALGS) -c $*.c
 
-testall: test1 test2 test3 test4 test5
+testall: test1 test2 test3 test4 test5 test6 test7 test8
 
 testadd: hw04 # hw04 here to ensure recompilation if necessary
 	test1
