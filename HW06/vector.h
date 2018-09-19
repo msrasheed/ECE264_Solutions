@@ -19,4 +19,6 @@ int numberOfElements(char* in_file_name);
 void fillVector(Vector* vector, int count, char * in_file_name);
 
 void writeFile(Vector* vector, int count, char* out_file_name);
+
+void vectorsCheck(Vector * vector, int count);
 #endif

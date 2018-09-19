@@ -41,5 +41,11 @@ test3: sort
 	./sort inputs/test3 > output3
 	diff output3 expected/expected3
 
+testRand: sort
+	shuf -r -i 1-1000 -n 10000 > inputs/test
+	sort -n inputs/test > expected/expected
+	$(VAL) ./sort inputs/test > ouput
+	diff ouput expected/expected
+
 clean: # remove all machine generated files
 	rm -f sort *.o output?

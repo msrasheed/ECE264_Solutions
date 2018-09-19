@@ -104,7 +104,7 @@ int main(int argc, char * * argv)
   // call the countFromFile(file_name); and store the number of elements in the file.
   int numElem = countFromFile(file);
   // allocate memory to store the numbers (initialize an array)
-  int* arr = malloc(sizeof(int) & numElem);
+  int* arr = malloc(sizeof(int) * numElem);
   // check for malloc fail, if so, "return EXIT_FAILURE;"
   if (arr == NULL)
   {
