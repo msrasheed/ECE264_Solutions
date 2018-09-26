@@ -1,0 +1,115 @@
+==811== Memcheck, a memory error detector
+==811== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==811== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==811== Command: ./a.out 5
+==811== Parent PID: 4
+==811== 
+--811-- 
+--811-- Valgrind options:
+--811--    --tool=memcheck
+--811--    --log-file=memcheck.txt
+--811--    --leak-check=full
+--811--    --verbose
+--811-- Contents of /proc/version:
+--811--   Linux version 4.4.0-17134-Microsoft (Microsoft@Microsoft.com) (gcc version 5.4.0 (GCC) ) #285-Microsoft Thu Aug 30 17:31:00 PST 2018
+--811-- 
+--811-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-lzcnt-rdtscp-sse3-avx-avx2-bmi
+--811-- Page sizes: currently 4096, max supported 4096
+--811-- Valgrind library directory: /usr/lib/valgrind
+--811-- Reading syms from /mnt/c/Users/Moiz/Documents/College/ECE264/solutions/quizes/0927/a.out
+--811-- Reading syms from /lib/x86_64-linux-gnu/ld-2.23.so
+--811--   Considering /lib/x86_64-linux-gnu/ld-2.23.so ..
+--811--   .. CRC mismatch (computed aa979a42 wanted 9019bbb7)
+--811--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/ld-2.23.so ..
+--811--   .. CRC is valid
+--811-- Reading syms from /usr/lib/valgrind/memcheck-amd64-linux
+--811--   Considering /usr/lib/valgrind/memcheck-amd64-linux ..
+--811--   .. CRC mismatch (computed eea41ea9 wanted 2009db78)
+--811--    object doesn't have a symbol table
+--811--    object doesn't have a dynamic symbol table
+--811-- Scheduler: using generic scheduler lock implementation.
+--811-- Reading suppressions file: /usr/lib/valgrind/default.supp
+==811== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-811-by-mrasheed-on-???
+==811== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-811-by-mrasheed-on-???
+==811== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-811-by-mrasheed-on-???
+==811== 
+==811== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==811== don't want to do, unless you know exactly what you're doing,
+==811== or are doing some strange experiment):
+==811==   /usr/lib/valgrind/../../bin/vgdb --pid=811 ...command...
+==811== 
+==811== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==811==   /path/to/gdb ./a.out
+==811== and then give GDB the following command
+==811==   target remote | /usr/lib/valgrind/../../bin/vgdb --pid=811
+==811== --pid is optional if only one valgrind process is running
+==811== 
+==811== error calling PR_SET_PTRACER, vgdb might block
+--811-- REDIR: 0x401cfd0 (ld-linux-x86-64.so.2:strlen) redirected to 0x3809e181 (???)
+--811-- Reading syms from /usr/lib/valgrind/vgpreload_core-amd64-linux.so
+--811--   Considering /usr/lib/valgrind/vgpreload_core-amd64-linux.so ..
+--811--   .. CRC mismatch (computed 2567ccf6 wanted 49420590)
+--811--    object doesn't have a symbol table
+--811-- Reading syms from /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so
+--811--   Considering /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so ..
+--811--   .. CRC mismatch (computed 0e27c9a8 wanted ac585421)
+--811--    object doesn't have a symbol table
+==811== WARNING: new redirection conflicts with existing -- ignoring it
+--811--     old: 0x0401cfd0 (strlen              ) R-> (0000.0) 0x3809e181 ???
+--811--     new: 0x0401cfd0 (strlen              ) R-> (2007.0) 0x04c31020 strlen
+--811-- REDIR: 0x401b920 (ld-linux-x86-64.so.2:index) redirected to 0x4c30bc0 (index)
+--811-- REDIR: 0x401bb40 (ld-linux-x86-64.so.2:strcmp) redirected to 0x4c320d0 (strcmp)
+--811-- REDIR: 0x401dd30 (ld-linux-x86-64.so.2:mempcpy) redirected to 0x4c35270 (mempcpy)
+--811-- Reading syms from /lib/x86_64-linux-gnu/libc-2.23.so
+--811--   Considering /lib/x86_64-linux-gnu/libc-2.23.so ..
+--811--   .. CRC mismatch (computed 7a8ee3e4 wanted a5190ac4)
+--811--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/libc-2.23.so ..
+--811--   .. CRC is valid
+--811-- REDIR: 0x4ec9a00 (libc.so.6:strcasecmp) redirected to 0x4a286f0 (_vgnU_ifunc_wrapper)
+--811-- REDIR: 0x4ec5280 (libc.so.6:strcspn) redirected to 0x4a286f0 (_vgnU_ifunc_wrapper)
+--811-- REDIR: 0x4ecbcf0 (libc.so.6:strncasecmp) redirected to 0x4a286f0 (_vgnU_ifunc_wrapper)
+--811-- REDIR: 0x4ec76f0 (libc.so.6:strpbrk) redirected to 0x4a286f0 (_vgnU_ifunc_wrapper)
+--811-- REDIR: 0x4ec7a80 (libc.so.6:strspn) redirected to 0x4a286f0 (_vgnU_ifunc_wrapper)
+--811-- REDIR: 0x4ec914b (libc.so.6:memcpy@GLIBC_2.2.5) redirected to 0x4a286f0 (_vgnU_ifunc_wrapper)
+--811-- REDIR: 0x4ec7400 (libc.so.6:rindex) redirected to 0x4c308a0 (rindex)
+--811-- REDIR: 0x4ebe130 (libc.so.6:malloc) redirected to 0x4c2db20 (malloc)
+==811== Invalid read of size 4
+==811==    at 0x400658: printPartition (partition.c:12)
+==811==    by 0x400696: partition (partition.c:20)
+==811==    by 0x4006D9: partition (partition.c:26)
+==811==    by 0x4006D9: partition (partition.c:26)
+==811==    by 0x4006D9: partition (partition.c:26)
+==811==    by 0x4006D9: partition (partition.c:26)
+==811==    by 0x4006D9: partition (partition.c:26)
+==811==    by 0x400759: main (partition.c:43)
+==811==  Address 0x520403c is 4 bytes before a block of size 20 alloc'd
+==811==    at 0x4C2DB8F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==811==    by 0x400741: main (partition.c:42)
+==811== 
+--811-- REDIR: 0x4ed0760 (libc.so.6:strchrnul) redirected to 0x4c34da0 (strchrnul)
+--811-- REDIR: 0x4ec93b0 (libc.so.6:__GI_mempcpy) redirected to 0x4c34fa0 (__GI_mempcpy)
+--811-- REDIR: 0x4ebe4f0 (libc.so.6:free) redirected to 0x4c2ed80 (free)
+==811== 
+==811== HEAP SUMMARY:
+==811==     in use at exit: 0 bytes in 0 blocks
+==811==   total heap usage: 2 allocs, 2 frees, 4,116 bytes allocated
+==811== 
+==811== All heap blocks were freed -- no leaks are possible
+==811== 
+==811== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+==811== 
+==811== 1 errors in context 1 of 1:
+==811== Invalid read of size 4
+==811==    at 0x400658: printPartition (partition.c:12)
+==811==    by 0x400696: partition (partition.c:20)
+==811==    by 0x4006D9: partition (partition.c:26)
+==811==    by 0x4006D9: partition (partition.c:26)
+==811==    by 0x4006D9: partition (partition.c:26)
+==811==    by 0x4006D9: partition (partition.c:26)
+==811==    by 0x4006D9: partition (partition.c:26)
+==811==    by 0x400759: main (partition.c:43)
+==811==  Address 0x520403c is 4 bytes before a block of size 20 alloc'd
+==811==    at 0x4C2DB8F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==811==    by 0x400741: main (partition.c:42)
+==811== 
+==811== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
