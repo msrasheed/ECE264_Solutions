@@ -30,7 +30,6 @@ void merge(int arr[], int l, int m, int r)
     */
     //WRITE YOUR CODE BELOW THIS 
     //Initialise variables
- 
     /* 
     1.Copy data to temp arrays L[] and R[] from arr[]
     2. Merge the temp arrays back into arr[l..r]
@@ -38,6 +37,32 @@ void merge(int arr[], int l, int m, int r)
        are any 
     4. Copy the remaining elements of R[], check if there 
        are any */
+    int leftInd;
+    for (leftInd = 0; leftInd < n1; leftInd++)
+    {
+      L[leftInd] = arr[l + leftInd];
+    }
+
+    int rightInd;
+    for (rightInd = 0; rightInd < n2; rightInd++) 
+    {
+      R[rightInd] = arr[m+1+rightInd];
+    }
+
+    leftInd = 0;
+    rightInd = 0;
+    int i;
+    for (i = 0; i < n1 + n2; i++)
+    {
+      if (L[leftInd] < R[rightInd] && leftInd < n1)
+      {
+        arr[l+i] = L[leftInd];
+      }
+      else if (rightInd < n2)
+      {
+        arr[l+i] = R[rightInd];
+      }
+    }
  //DO not modify below this line until specified in comments
 	
 }
@@ -61,8 +86,19 @@ void mergeSort(int arr[], int l, int r)
 	2. Sort first half arr[l..m]
 	3. Sort second half arr[m+1..r]
         4. Use the merge() function to arrange in order */
+  int m = l + (r - l)/2;
+  if (r-l < 1)
+  {
+    mergeSort(arr, l, m);
+    mergeSort(arr, m+1, r);
+  }
+  else
+  {
+    return;
+  }
+  merge(arr, l, m, r);
 	//DO not modify below this line until specified in comments
-    } 
+} 
 #endif
 int main(int argc, char * * argv)
 {
@@ -114,6 +150,7 @@ int main(int argc, char * * argv)
   // modify here between ifdef and endif
   // do not modify anywhere else in this function
   // call mergesort function and provide the correct arguments (Hint: array, start index, end index)
+  mergeSort(arr, 0, count-1);
 #endif
   int i;
    /* open the file for writing*/
