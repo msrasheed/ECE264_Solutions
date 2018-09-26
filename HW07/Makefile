@@ -28,8 +28,14 @@ test2: hw07
 	diff output2 Expected/Expected2
 
 test3: hw07
-	./hw07 Input/test3 output3 
+	./hw07 Input/Test3 output3 
 	diff output3 Expected/Expected3
+
+testRand: hw07
+	shuf -r -i 1-1000 -n 10000 > Input/Test
+	sort -n Input/Test > Expected/Expected
+	./hw07 Input/Test output
+	diff output Expected/Expected
 
 clean: 
 	rm -f hw07 *.o output? memcheck.txt

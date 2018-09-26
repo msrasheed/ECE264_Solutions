@@ -38,7 +38,7 @@ void merge(int arr[], int l, int m, int r)
     4. Copy the remaining elements of R[], check if there 
        are any */
     int leftInd;
-    for (leftInd = 0; leftInd < n1; leftInd++)
+    for (leftInd = 0; leftInd < n1; leftInd++)  
     {
       L[leftInd] = arr[l + leftInd];
     }
@@ -54,15 +54,35 @@ void merge(int arr[], int l, int m, int r)
     int i;
     for (i = 0; i < n1 + n2; i++)
     {
-      if (L[leftInd] < R[rightInd] && leftInd < n1)
+      if (leftInd < n1 && rightInd < n2) 
       {
-        arr[l+i] = L[leftInd];
+        if(L[leftInd] <= R[rightInd])
+        {
+          arr[l+i] = L[leftInd];
+          leftInd++;
+        }
+        else
+        {
+          arr[l+i] = R[rightInd];
+          rightInd++;
+        }
       }
-      else if (rightInd < n2)
+      else
       {
-        arr[l+i] = R[rightInd];
+        if (leftInd < n1)
+        {
+          arr[l+i] = L[leftInd];
+          leftInd++;
+        }
+        else
+        {
+          arr[l+i] = R[rightInd];
+          rightInd++;
+        }
       }
     }
+    free(R);
+    free(L);
  //DO not modify below this line until specified in comments
 	
 }
@@ -87,15 +107,12 @@ void mergeSort(int arr[], int l, int r)
 	3. Sort second half arr[m+1..r]
         4. Use the merge() function to arrange in order */
   int m = l + (r - l)/2;
-  if (r-l < 1)
-  {
-    mergeSort(arr, l, m);
-    mergeSort(arr, m+1, r);
-  }
-  else
+  if (r-l == 0)
   {
     return;
   }
+  mergeSort(arr, l, m);
+  mergeSort(arr, m+1, r);
   merge(arr, l, m, r);
 	//DO not modify below this line until specified in comments
 } 
