@@ -6,6 +6,7 @@ ERROR = -Wvla -Werror
 GCC = gcc -std=c99 -g $(WARNING) $(ERROR)
 
 #declare test flags, for example: TESTFLAGS = -DTEST_MAIN -DTEST_SHUF -DTEST_INTER -DTEST_DIV
+TESTFLAGS = -DTEST_MAIN -DTEST_SHUF -DTEST_INTER -DTEST_DIV
 
 SRCS =  main.c utility.c shuffle.c
 
@@ -19,20 +20,22 @@ $(TARGET): $(OBJS)
 .c.o: 
 	$(GCC) $(TESTFLAGS) -c $*.c 
 
-#val:
-#	$(VALGRIND)=./logfile ./shuf
+val: shuf
+	$(VALGRIND)=./logfile ./shuf 11
+
+testall: test1 test2 test3
 
 test1: shuf
-	./shuf 4 > output1
-	#run diff between output1 expected/expected1
+	./shuf 4 | sort > output1.txt
+	diff output1.txt expected/expected1.txt
 	
 test2: shuf
-	./shuf 8 > output2
-	#run diff between output2 expected/expected2
+	./shuf 8 | sort > output2.txt
+	diff output2.txt expected/expected2.txt
 
 test3: shuf
-	./shuf 11 > output3
-	#run diff between output3 expected/expected3
+	./shuf 11 | sort > output3.txt
+	diff output3.txt expected/expected3.txt
 
 clean:
-	rm -f $(OBJS) $(TARGET)
+	rm -f $(OBJS) $(TARGET) logfile *.txt
