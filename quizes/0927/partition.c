@@ -23,7 +23,7 @@ void partition(int * arr, int ind, int left)
   for (val = 1; val <= left; val ++)
     {
       arr[ind] = val;
-      partition(arr, ind++, left - val);
+      partition(arr, ind+1, left - val);
     }
 }
 

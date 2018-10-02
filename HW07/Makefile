@@ -5,8 +5,8 @@ VAL = valgrind --tool=memcheck --log-file=memcheck.txt --leak-check=full --verbo
 
 TESTFLAGS = -DTEST_MERGE -DTEST_MERGESSORT -DTEST_MERGESORT
 
-SRCS = main.c
-OBJS = $(SRCS:%.c=%.o)
+SRCS = main.c #step.c
+OBJS = $(SRCS:%.c=%.o) # = main.o step.o
 
 hw07: $(OBJS)
 	$(GCC) $(TESTFLAGS) $(OBJS) -o hw07
