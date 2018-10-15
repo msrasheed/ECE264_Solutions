@@ -56,7 +56,7 @@ BMPImage * ImgToGray(BMPImage * image){
 	//gray_image->data[pixel+1] = gray_val;
 	//gray_image->data[pixel] = gray_val;
 	//pixel+=3 to move on to the next 3 channel combination
-	for (pixel = 0; pixel < width * height; pixel += 3) 
+	for (pixel = 0; pixel < width * height * 3; pixel += 3) 
 	{
 		int gray_val = RGB2Gray(image->data[pixel+2], image->data[pixel+1], image->data[pixel]);
 		gray_image->data[pixel+2] = gray_val;

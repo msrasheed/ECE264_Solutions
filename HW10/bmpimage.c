@@ -94,6 +94,7 @@ int Is_BMPHeader_Valid(BMPHeader* header, FILE *fptr) {
 		fprintf(stderr, "fseek failed second time\n");
 		return 0;
 	}
+	//file_pos = ftell(fptr);
 
 	//check if file_size is not equal to header->size
 	if (file_size != header->size)
@@ -170,7 +171,7 @@ BMPImage *BMP_Open(const char *filename) {
 	
 	// Allocate memory for image data
 	//(bmpImage->data = (unsigned char *)malloc(sizeof(unsigned char)*((int)((bmpImage->header).imagesize))))
-	bmpImage->data = (unsigned char *)malloc(sizeof(unsigned char)*((int)((bmpImage->header).imagesize)));
+	bmpImage->data = malloc(sizeof(unsigned char) * ((bmpImage->header).imagesize));
 	//check error
 	if (bmpImage->data == NULL)
 	{
