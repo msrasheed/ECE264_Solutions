@@ -179,7 +179,7 @@ BMPImage *BMP_Open(const char *filename) {
 	}
 
 	// read in the image data
-	long numBytesRead = fread(bmpImage->data, sizeof(char), (bmpImage->header).imagesize, fptr);
+	long numBytesRead = fread(bmpImage->data, sizeof(unsigned char), (bmpImage->header).imagesize, fptr);
 
 	//check for error while reading
 	if (numBytesRead != (bmpImage->header).imagesize)
@@ -216,7 +216,8 @@ int BMP_Write(const char * outfile, BMPImage* image)
 	}
 	
 	// write and check for image data:(fwrite(image->data, sizeof(unsigned char), (image->header).imagesize, fptr) != (image->header).imagesize) 
-	if (fwrite(image->data, sizeof(unsigned char), (image->header).imagesize, fptr) != (image->header).imagesize)
+	long numBytesWritten = fwrite(image->data, sizeof(unsigned char), (image->header).imagesize, fptr);
+	if (numBytesWritten != (image->header).imagesize)
 	{
 		fprintf(stderr, "Error in writing image data to file\n");
 		return 0;
