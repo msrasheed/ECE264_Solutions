@@ -17,7 +17,7 @@ $(TARGET): $(OBJS)
 	$(GCC) $(CFLAGS) $(TESTFLAGS) -c $*.c
 
 testmemory: $(TARGET)
-	$(VALGRIND)=./valgrind.log ./$(TARGET) 7 2
+	$(VALGRIND)=./valgrind.log ./$(TARGET) exampleImages/CondProb.bmp output1.bmp
 
 testall: test1 test2 test3 test4
 
