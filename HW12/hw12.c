@@ -72,7 +72,6 @@ void LinkedListCreate(Node * * head, int length)
 	for (i = length - 1; i >= 0; i--)
 	{
 		p = CreateNode(i);
-		p->value = i;
 		p->next = n;
 		n = p;
 	}
