@@ -13,11 +13,26 @@ int main(int argc, char **argv)
 {
 	// input argv[1] contains the name of the input file.
 	// Check for the right number of input arguments. 
-
+	if (argc < 2)
+	{
+		fprintf(stderr, "not enough input arguments\n");
+		return EXIT_FAILURE;
+	}
 	//Initialize a linked list Node and use the file name from input arguments to create a linked list
+	Node * head = NULL;
+	LinkedListCreate(&head, argv[1]);
 	//Remove all duplicates in the linked list created above.
-
+	RemoveDuplicate(head);
 	// release memory
+	LinkedListPrint(head);
+
+	Node * p;
+	while(head != NULL)
+	{
+		p = head;
+		head = head->next;
+		free(p);
+	}
 }
 
 #endif
