@@ -1,3 +1,0 @@
-tree1 is contained in tree2
-tree2 is contained in tree1
-tree1 and tree2 are mutually contained.

@@ -57,7 +57,6 @@ void BinaryTreePostOrderPrint(treeNode *tn)
 #ifdef TEST_DIST
 int FindDistance(treeNode* t, int search_query, int distance)
 {
-
 	/*
 	 * This function recursively checks for the value of search_query in the tree. 
 	 * Use the properties of binary search tree in order to search for the search_query.
@@ -66,7 +65,24 @@ int FindDistance(treeNode* t, int search_query, int distance)
 	 * if the value 'search_query' does not exist in the tree, return -1.
 	 *
 	 */
-
+    if (t == NULL)
+    {
+        return -1;
+    }
+    if (t->value == search_query)
+    {
+        return distance;
+    }
+    int dist = -1;
+    if (t->value > search_query)
+    {
+        dist = FindDistance(t->leftChild, search_query, distance + 1);
+    }
+    if (dist != -1)
+    {
+        return dist;
+    }
+    return FindDistance(t->rightChild, search_query, distance + 1);
 }
 #endif
 ///***** MODIFY THIS FUNCTION ******/////
@@ -74,10 +90,9 @@ int FindDistance(treeNode* t, int search_query, int distance)
 #ifdef TEST_CREATEBST
 treeNode* CreateBST(int* a,int root, int start, int end)
 {
-
 	/*
 	 *
-	 * Create a node, allocate memort and assign the value of root to it.
+	 * Create a node, allocate memory and assign the value of root to it.
 	 * Based on the values, divide the array into two subarrays: left child and right.
 	 *	Dividing here means to reassign the values of start and end for each sub array.
 	 * Store the first value of every subarray as the root.
@@ -87,7 +102,32 @@ treeNode* CreateBST(int* a,int root, int start, int end)
 	 *   its children accordingly.
 	 *
 	 *//////
-	 
-	 
+    treeNode * tn = malloc(sizeof(treeNode));
+    tn->value = root;
+    tn->leftChild = NULL;
+    tn->rightChild = NULL;
+    if (end == start)
+    {
+        return tn;
+    }
+
+    int startL = start + 1;
+    int endL = startL;
+    while (endL <= end && a[endL] < root)
+    {
+        endL++;
+    }
+    if (endL != startL)
+    {
+        tn->leftChild = CreateBST(a, a[startL], startL, endL - 1);
+    }
+    
+    int startR = endL;
+    int endR = end;
+    if (startR <= end)
+    {
+        tn->rightChild = CreateBST(a, a[startR], startR, endR);
+    }
+    return tn;
 }
 #endif
