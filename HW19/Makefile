@@ -1,9 +1,9 @@
-TARGET = hw18
+TARGET = hw19
 GCC = gcc
 CFLAGS = -g -std=c99 -Wall -Wshadow -Wvla -Werror -pedantic
 CC = $(GCC) $(CFLAGS)
 
-SRCS = main.c hw18.c
+SRCS = main.c hw19.c
 
 OBJS = $(SRCS:%.c=%.o)
 VALGRIND = valgrind --tool=memcheck --verbose --log-file
@@ -17,7 +17,7 @@ $(TARGET): $(OBJS)
 	$(GCC) $(CFLAGS) $(TESTFLAGS) -c $*.c
 
 testmemory: $(TARGET)
-	$(VALGRIND)=./valgrind.log ./$(TARGET) inputs/test7.txt
+	$(VALGRIND)=./valgrind.log ./$(TARGET) inputs/test10.txt
 
 testall: test1 test2 test3 test4 test5 test6 test7 test8 test9 test10
 
